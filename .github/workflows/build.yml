@@ -1,4 +1,4 @@
-name: Build Windows EXE for Laba2
+name: Build Windows EXE for Laba3
 
 on: [push, workflow_dispatch]
 
@@ -13,18 +13,19 @@ jobs:
         with:
           python-version: '3.11'
           
-      - name: Install dependencies
+      - name: Install dependencies and UPX
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller pillow numpy
-          
-      - name: Build EXE
-        working-directory: ./лаба2
+          pip install pyinstaller
+          choco install upx
+
+      - name: Build EXE with UPX Compression
+        working-directory: ./лаба3
         run: |
-          pyinstaller --onefile --noconsole laba2.py
+          pyinstaller --onefile --noconsole laba3.py
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: laba2-windows
-          path: лаба2/dist/laba2.exe
+          name: laba3-windows
+          path: лаба3/dist/laba3.exe
