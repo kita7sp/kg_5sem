@@ -19,6 +19,7 @@ jobs:
           pip install pyinstaller pillow numpy
           
       - name: Build EXE
+        working-directory: ./лаба2
         run: |
           pyinstaller --onefile --noconsole laba2.py
           
@@ -26,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: laba2-windows
-          path: dist/laba2.exe
+          path: лаба2/dist/laba2.exe
