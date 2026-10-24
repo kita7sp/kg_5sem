@@ -20,7 +20,7 @@ jobs:
           
       - name: Build EXE
         run: |
-          pyinstaller --onefile --noconsole laba2.py
+          pyinstaller --onefile --noconsole "лаба2/laba2.py"
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
